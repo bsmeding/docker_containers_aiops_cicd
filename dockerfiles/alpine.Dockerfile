@@ -3,6 +3,7 @@ ARG PYTHON_VERSION=system
 FROM ${BASE_IMAGE}
 
 ARG PYTHON_VERSION
+ARG TARGETARCH
 
 COPY requirements/apk.txt /tmp/apk.txt
 COPY requirements/pip.txt /tmp/pip.txt
@@ -27,7 +28,12 @@ RUN PYTHON_VER=$(cat /tmp/python_version) && \
     fi && \
     . /opt/venv/bin/activate && \
     pip install --upgrade pip setuptools wheel && \
-    pip install --no-cache-dir -r /tmp/pip.txt && \
+    if [ "$TARGETARCH" = "arm64" ]; then \
+        grep -v '^duckdb$' /tmp/pip.txt > /tmp/pip-filtered.txt; \
+    else \
+        cp /tmp/pip.txt /tmp/pip-filtered.txt; \
+    fi && \
+    pip install --no-cache-dir -r /tmp/pip-filtered.txt && \
     rm -f /tmp/python_version && \
     rm -rf /root/.cache
 
