@@ -1,0 +1,52 @@
+# Packaging and CI
+uv
+pip-tools
+pytest
+pytest-asyncio
+pytest-cov
+ruff
+mypy
+
+# Contracts and structured output
+pydantic
+pydantic-settings
+jsonschema
+pyyaml
+jinja2
+python-dotenv
+
+# API and CLI helpers
+requests
+httpx
+rich
+typer
+structlog
+
+# LLM clients and evaluation
+openai
+anthropic
+litellm
+deepeval
+ragas
+langchain
+langgraph
+langsmith
+
+# Test data, replay, and mocks
+responses
+respx
+vcrpy
+freezegun
+faker
+
+# Data utilities
+pandas
+numpy
+duckdb
+
+# Observability and operational APIs
+opentelemetry-api
+opentelemetry-sdk
+prometheus-api-client
+pynautobot
+pynetbox
